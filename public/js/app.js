@@ -1,4 +1,4 @@
-var app = angular.module('itsGoingDown', ['ngRoute',  'appAuthentication', 'appServices']).run(function($rootScope, $http){
+var app = angular.module('itsGoingDown', ['ngRoute',  'appAuthentication', 'appServices', 'appVenues']).run(function($rootScope, $http){
   
 });
 
@@ -20,10 +20,25 @@ app.config(function($routeProvider){
       templateUrl: '/register.html',
       controller: 'AuthController'
     })
+    //the signup display
+    .when('/search', {
+      templateUrl: '/list.html',
+      controller: 'AuthController'
+    })
+    //the signup display
+    .when('/biz/:business', {
+      templateUrl: '/business.html',
+      controller: 'AuthController'
+    })
     //the settings display
     .when('/settings', {
       templateUrl: '/settings.html',
       controller: 'settingsController'
+    })
+    //the signup display
+    .when('/:user', {
+      templateUrl: '/user.html',
+      controller: 'AuthController'
     });
 });
 

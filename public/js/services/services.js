@@ -12,3 +12,12 @@ appServices.factory('currentUserService', function() {
         
     };
 });
+
+appServices.factory('SearchService', function() {
+    var term = '';
+    var setTerm = function(query) {
+      term = query;
+      console.log(term);
+    };
+   return term;
+});

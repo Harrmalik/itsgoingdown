@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 var connectMongo = require("connect-mongo");
 
 var users = require('./routes/users')(passport);
+var api =  require("./routes/api");
 
 var MongoStore = connectMongo(session);
 mongoose.connect('mongodb://admin-mh:password@ds033317.mongolab.com:33317/heroku_l7nbt7vw');
@@ -47,6 +48,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', users);
+app.use('/api', api);
 
 //// Initialize Passport
 var initPassport = require('./passport-init');

@@ -1,13 +1,5 @@
-<article ng-controller="VenueController">
-  <form class="ui form">
-    <div class="ui action huge inverted input field">
-      <label>Find Location</label>
-      <input type="text" name="location" ng-model="term" placeholder="Alfred, NY 14802">
-      <button class="ui teal button" ng-click="query(term); showing = true">Search</button>
-    </div>
-</form>
-
-  <article id="list" class="ui raised very padded text container segment" ng-show="showing">
+<article id="list" ng-controller="VenueController" class="ui raised very padded text container segment">
+    {{$scope.term}}
     <div class="ui items" ng-repeat="store in restaurants">
       <div class="item">
         <div class="image">
@@ -18,7 +10,7 @@
         </div>
         <div class="content">
             <a class="ui green right ribbon label"><i class="adjust icon"></i> Open Now!</a>
-          <a class="header" href="{{ '#/biz/' + store.id}}">{{store.name}} </a>
+          <a class="header">{{store.name}} </a>
           <div class="meta">
             <span>{{store.display_phone}}</span>
           </div>
@@ -31,7 +23,4 @@
         </div>
       </div>
     </div>
-  </article>
 </article>
-
-

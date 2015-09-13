@@ -3,6 +3,7 @@ body {
 }
 
 header img {
+  position: absolute;
   width: 100%;
   max-height: 500px;
   border-bottom: 3px solid #00B5AD;
@@ -16,7 +17,21 @@ section {
   margin: 10px;  
 }
 
+article#list {
+  margin: auto;
+  width: 80%;
+}
+
 .ui.form {
   margin: auto;
   width: 80%;
 } 
+
+.ui.items>.item .extra {
+  display: inline-block;
+  width: auto;
+}
+
+#tag {
+  margin:10px !important;
+}
