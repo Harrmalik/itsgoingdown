@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="itsGoingDown">
   <head>
     <title><%= title %></title>
     <!--                            SCRIPT FILES                                                         -->
@@ -14,17 +14,23 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <header>
-      <nav class="ui blue inverted pointing menu">
-        <a class="active blue item">
-          Home
-        </a>
-        <div class="right menu">
-          <a class="item">
-            Log In
+    <header ng-controller="NavController">
+      <nav class="ui teal inverted pointing menu" ng-controller="AuthController">
+          <a class="item blue" href="#" ng-class="{ active : isSelected('index')}" ng-click="selectedPage('index')">
+            <i class="home icon"></i> Home
           </a>
-          <a class="item">
-            Sign up
+        <div class="right menu">
+          <a class="item" href="#/login" ng-hide="authenticated" ng-class="{ active : isSelected('login')}" ng-click="selectedPage('login')">
+            <i class="mail icon"></i> Login
+          </a>
+          <a class="item" href="#/register" ng-hide="authenticated" ng-class="{ active : isSelected('register')}" ng-click="selectedPage('register')">
+            <i class="user icon"></i> Register
+          </a>
+          <a class="item" href ng-click="signout()" ng-show="authenticated">
+            <i class="user icon"></i> Logout
+          </a>
+          <a class="item" href="#/settings" ng-show="authenticated" ng-class="{ active : isSelected('settings')}" ng-click="selectedPage('settings')">
+            <i class="user icon"></i> Settings
           </a>
         </div>
       </div>
@@ -33,14 +39,11 @@
       <img src="/images/aheader.jpg" alt="image of a city"/>
     </header>
     
-    <section>
-      <form class="ui form">
-        <div class="ui action input field">
-          <label>Find Location</label>
-          <input type="text" name="location" placeholder="Alfred, NY 14802">
-          <button class="ui button">Search</button>
-        </div>
-      </form>
-    </section>
+    <section ng-view></section>
+    
+    <!--                            Controllers                                                         -->
+    <script src="/js/app.js" type="text/javascript"></script>
+    <script src="/js/services/services.js" type="text/javascript"></script>
+    <script src="/js/auth.js" type="text/javascript"></script>
   </body>
 </html>

@@ -4,7 +4,8 @@ body {
 
 header img {
   width: 100%;
-  border-bottom: 3px solid #2185D0;
+  max-height: 500px;
+  border-bottom: 3px solid #00B5AD;
 }
 
 nav {
