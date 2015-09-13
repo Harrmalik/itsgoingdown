@@ -1,0 +1,21 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+header img {
+  width: 100%;
+  border-bottom: 3px solid #2185D0;
+}
+
+nav {
+  margin: 0 !important;
+}
+
+section {
+  margin: 10px;  
+}
+
+.ui.form {
+  margin: auto;
+  width: 80%;
+} 

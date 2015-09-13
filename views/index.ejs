@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!--                            SCRIPT FILES                                                         -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/semantic.min.js"></script>
+    
+    <!--                            CSS FILES                                                         -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/semantic.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+      <nav class="ui blue inverted pointing menu">
+        <a class="active blue item">
+          Home
+        </a>
+        <div class="right menu">
+          <a class="item">
+            Log In
+          </a>
+          <a class="item">
+            Sign up
+          </a>
+        </div>
+      </div>
+      </nav>
+      
+      <img src="/images/aheader.jpg" alt="image of a city"/>
+    </header>
+    
+    <section>
+      <form class="ui form">
+        <div class="ui action input field">
+          <label>Find Location</label>
+          <input type="text" name="location" placeholder="Alfred, NY 14802">
+          <button class="ui button">Search</button>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
