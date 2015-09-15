@@ -1,5 +1,11 @@
 <article ng-controller="VenueController as venCtrl" class="ui raised very padded text container segment">
-    <h2 class="ui header">{{restaurant.name}}</h2>
+    <h2 class="ui header">{{restaurant.name}}
+      <div class="ui sub header">
+        <img class="ui image small" ng-src="{{restaurant.rating_img_url_large}}"/>
+      </div>
+    </h2>
+    
+    <img id="tagHeader" src="/images/chinese-header.jpg" alt="chinese food header" />
     
     <!-- Location -->
     <div class="ui card">
@@ -7,8 +13,7 @@
         <div class="header">Address</div>
       </div>
       <div class="content">
-        <h4 class="ui sub header">Activity</h4>
-        <div class="ui small feed">
+        <div class="ui medium feed">
           <div class="event">
             <div class="content">
               <div class="summary">
@@ -34,11 +39,76 @@
         </div>
       </div>
       <div class="extra content">
-        <button class="ui button">Join Project</button>
+            <label>Tags</label>
+            <div ng-repeat="tag in restaurant.categories">
+            <div id="tag" class="ui label teal">{{tag[0]}}</div>
+            </div>
       </div>
     </div>
     
+    <h4 class="ui horizontal divider teal header">
+      <i class="write icon"></i>
+      Reviews
+    </h4>
+    
     <article ng-controller="reviewController">
+      <div class="ui feed">
+        <div class="event">
+          <div class="label">
+            <img src="/images/avatar.png">
+          </div>
+          <div class="content">
+            <div class="date">
+              3 days ago
+            </div>
+            <div class="content">
+               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </div>
+            <div class="meta">
+              <a class="like">
+                <i class="like icon"></i> 4 Likes
+              </a>
+            </div>
+          </div>
+        </div>
         
+        <div class="event">
+          <div class="label">
+            <img src="/images/avatar.png">
+          </div>
+          <div class="content">
+            <div class="date">
+              3 days ago
+            </div>
+            <div class="content">
+               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </div>
+            <div class="meta">
+              <a class="like">
+                <i class="like icon"></i> 4 Likes
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="event">
+          <div class="label">
+            <img src="/images/avatar.png">
+          </div>
+          <div class="content">
+            <div class="date">
+              3 days ago
+            </div>
+            <div class="summary">
+               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </div>
+            <div class="meta">
+              <a class="like">
+                <i class="like icon"></i> 4 Likes
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </article>
 </article>

@@ -55,3 +55,7 @@ app.controller('NavController', function($scope) {
 		return $scope.page === currentPage;
 	};
 });
+
+$('.ui.rating')
+  .rating()
+;

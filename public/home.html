@@ -12,14 +12,13 @@
     <div class="ui items" ng-repeat="store in restaurants">
       <div class="item">
         <div class="image">
-            <div class="ui green ribbon label">
-                <i class="Adjust icon"></i> Open Now!
-            </div>
             <img src="{{store.image_url || store.snippet_image_url}}" alt="restaurant image" />
         </div>
         <div class="content">
             <a class="ui green right ribbon label"><i class="adjust icon"></i> Open Now!</a>
-          <a class="header" href="{{ '#/biz/' + store.id}}">{{store.name}}</a>
+            <div class="header">
+              <a href="{{ '#/biz/' + store.id}}">{{store.name}}</a>   <span class="ui orange label">{{store.rating}}</span> 
+            </div>
           <div class="meta">
             <span>{{store.display_phone}}</span>
           </div>

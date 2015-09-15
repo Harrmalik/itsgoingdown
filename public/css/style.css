@@ -33,6 +33,17 @@ article#list {
   width: auto;
 }
 
+.ui.items>.item .extra.content {
+  display: inline-block;
+  width: auto;
+}
+
 #tag {
   margin:10px !important;
+}
+
+#tagHeader {
+  width:100%;
+  margin:0;
+  padding: 0;
 }
