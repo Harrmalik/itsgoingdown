@@ -4,6 +4,7 @@ body {
 
 header img {
   position: absolute;
+  z-index: -1;
   width: 100%;
   max-height: 500px;
   border-bottom: 3px solid #00B5AD;

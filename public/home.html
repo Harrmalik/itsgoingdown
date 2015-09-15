@@ -1,9 +1,10 @@
 <article ng-controller="VenueController">
+  <h1 class="ui header centered">It's Going Down
+  <div class="ui sub header">Will you be there?</div></h1>
   <form class="ui form">
     <div class="ui action huge inverted input field">
-      <label>Find Location</label>
-      <input type="text" name="location" ng-model="term" placeholder="Alfred, NY 14802">
-      <button class="ui teal button" ng-click="query(term); showing = true">Search</button>
+      <input type="text" name="location" ng-model="term" placeholder="Where are you?">
+      <button class="ui teal button" ng-click="query(term); showing = true">Check it Out</button>
     </div>
 </form>
 
@@ -14,11 +15,11 @@
             <div class="ui green ribbon label">
                 <i class="Adjust icon"></i> Open Now!
             </div>
-            <img src="{{store.snippet_image_url}}" alt="restaurant image" />
+            <img src="{{store.image_url || store.snippet_image_url}}" alt="restaurant image" />
         </div>
         <div class="content">
             <a class="ui green right ribbon label"><i class="adjust icon"></i> Open Now!</a>
-          <a class="header" href="{{ '#/biz/' + store.id}}">{{store.name}} </a>
+          <a class="header" href="{{ '#/biz/' + store.id}}">{{store.name}}</a>
           <div class="meta">
             <span>{{store.display_phone}}</span>
           </div>

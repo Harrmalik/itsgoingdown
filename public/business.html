@@ -1,3 +1,44 @@
 <article ng-controller="VenueController as venCtrl" class="ui raised very padded text container segment">
-    <h2 class="ui header">{{restaurant.name}}</h1>
+    <h2 class="ui header">{{restaurant.name}}</h2>
+    
+    <!-- Location -->
+    <div class="ui card">
+      <div class="content">
+        <div class="header">Address</div>
+      </div>
+      <div class="content">
+        <h4 class="ui sub header">Activity</h4>
+        <div class="ui small feed">
+          <div class="event">
+            <div class="content">
+              <div class="summary">
+                 <a>City</a> {{restaurant.location.city}}
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="content">
+              <div class="summary">
+                 <a>Address</a> {{restaurant.location.display_address[0]}} 
+                 <p>{{restaurant.location.display_address[1]}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="content">
+              <div class="summary">
+                 <a>State</a> {{restaurant.location.state_code}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="extra content">
+        <button class="ui button">Join Project</button>
+      </div>
+    </div>
+    
+    <article ng-controller="reviewController">
+        
+    </article>
 </article>

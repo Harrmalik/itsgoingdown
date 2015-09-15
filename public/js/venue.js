@@ -25,7 +25,7 @@ appVenues.controller('VenueController', ['$http', '$scope', 'SearchService', '$r
         };
         
         $scope.getBiz = function() {
-            $http.get("../api/businesses/" + $scope.biz).success(function(data) {
+            $http.get("../api/biz/" + $scope.biz).success(function(data) {
                 console.log(data);
                 location.restaurant = data;
             });   
