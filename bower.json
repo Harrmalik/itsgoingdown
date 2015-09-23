@@ -1,0 +1,35 @@
+{
+  "name": "angular-semantic-ui",
+  "description": "Angular - AngularJS directives for Semantic UI.",
+  "version": "0.0.3",
+  "keywords": [
+    "angular",
+    "ui"
+  ],
+  "author": {
+    "name": "Malik harrison",
+    "url": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": ""
+    }
+  ],
+  "ignore": [
+    "docs",
+    "test",
+    "CONTRIBUTING.md"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "semantic": "latest"
+  },
+  "devDependencies": {
+    "angular-mocks" : "latest"
+  }
+}

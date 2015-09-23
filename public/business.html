@@ -46,34 +46,81 @@
       </div>
     </div>
     
+    
+    
+
+    
     <h4 class="ui horizontal divider teal header">
       <i class="write icon"></i>
       Reviews
     </h4>
-  
+    
+    
+    
+    
+    
+    <div ng-if="reviews[0] == null;">
+      <p>There are no reviews yet bet the first.</p>
+      <div class="ui red button">Write Review</div>
+    </div>
+    <div ng-if="">
+      <div class="ui red button">Write Review</div>
+    </div>
+    
+    
+    
+    
     <article>
       <div ng-if="reviews[0] == null;">
         <p>There are no reviews yet bet the first.</p>
         <div class="ui red button">Write Review</div>
       </div>
+      <div ng-if="reviews[0] !== null;">
+        <div class="ui red button" ng-click="showForm != showForm;">Write Review</div>
+      </div>
+
+      <form class="ui form" ng-submit="addReview()">
+        <p class="text-warning">{{error_message}}</p>
+          <div class="required field">
+              <div class="field">
+                <label>Review</label>
+                <textarea ng-model="review" placeholder="What do you think about this resturant" rows="3"></textarea>
+              </div>
+          </div>
+          <rating id="my-rating" size="large" type="star" ng-model="rating"></rating>
+          <div class="field" ng-hide="true">
+              <input ng-model="restaurant.id">
+          </div>
+        <div class="ui error message">
+          <div class="header">We noticed some issues</div>
+        </div>
+        <button class="ui button teal right floated" type="submit">Submit</button>
+        <h4 class="ui horizontal divider">
+        </h4>
+      </form>
+    
       <div class="ui feed" ng-repeat="review in reviews">
-        <div class="event">
+        <div class="event" ng-repeat="rev in review.reviews">
           <div class="label">
             <img src="/images/avatar.png">
           </div>
           <div class="content">
-            <div class="date">
-              {{review.reviews[0].date_created | date: dd}}
+            <div class="summary">
+              <a>{{review.display_name}}</a> <rating id="my-rating" size="large" type="star" ng-model="arating"></rating>
+              <div class="date">
+                {{rev.date_created | date: dd}}
+              </div>
             </div>
-            <div class="content">
-               {{review.reviews[0].review}}
+            <div class="extra text">
+              {{rev.review}}
             </div>
             <div class="meta">
               <a class="like">
-                <i class="like icon"></i> {{review.reviews[0].likes}} Likes
+                <i class="like icon"></i> 5 Likes
               </a>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </article>

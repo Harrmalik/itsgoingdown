@@ -1,6 +1,6 @@
 var appVenues = angular.module('appVenues', ['appServices']);
 
-appVenues.controller('VenueController', ['$http', '$scope', 'SearchService', 
+appVenues.controller('VenueController', ['$http', '$scope', 'SearchService',  
         '$routeParams', 
     function($http, $scope, SearchService, $routeParams) {
         $scope.search = "14802";
@@ -10,7 +10,7 @@ appVenues.controller('VenueController', ['$http', '$scope', 'SearchService',
         // location.restaurant = {};
         $scope.biz = $routeParams.business;
         var rests;
-        
+
         $scope.nearMe = function() {
             $http.get("http://ip-api.com/json").success(function(data) {
                 location.area = data.zip;
@@ -48,8 +48,12 @@ appVenues.controller('VenueController', ['$http', '$scope', 'SearchService',
                 location.reviews = data;
                 console.log(data);
             });
-            //reviewsFactory.query()
         }
+        //console.log(currentUserService.currUser);
+        $scope.addReview = function() {
+            $http.post('/reviews/' + $scope.scope_current_user, $scope.review).success(function(data){
+    		});
+        };
         // $scope.query("14802");
         // console.log($scope.search);
         //console.log(location.restaurants);
