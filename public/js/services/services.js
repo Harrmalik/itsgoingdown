@@ -1,5 +1,12 @@
 var appServices = angular.module("appServices", ['ngResource']);
 
+// appServices.factory('reviewsFactory',['$resource', function($resource, biz){
+// 	return $resource('/api/biz/' + biz + '/reviews', null,  
+// 		{
+//             'query': { method: 'GET' }
+//     });
+// }]);
+
 appServices.factory('currentUserService', function() {
     var currUser = undefined;
     return {

@@ -8,7 +8,8 @@ app.config(function($routeProvider){
     .when('/', {
       templateUrl: '/home.html',
       controller: 'AuthController',
-      controllerAs: 'AuthCtrl'
+      controllerAs: 'AuthCtrl',
+      reloadOnSearch: false
     })
     //the login display
     .when('/login', {

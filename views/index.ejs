@@ -2,6 +2,7 @@
 <html ng-app="itsGoingDown">
   <head>
     <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--                            SCRIPT FILES                                                         -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.min.js"></script>
@@ -13,11 +14,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/semantic.min.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
+  <body  ng-controller="AuthController">
     <header ng-controller="NavController">
-      <nav class="ui teal inverted pointing menu" ng-controller="AuthController">
+      <nav class="ui teal inverted pointing menu"  ng-controller="VenueController">
           <a class="item blue" href="#" ng-class="{ active : isSelected('index')}" ng-click="selectedPage('index')">
             <i class="home icon"></i> Home
+          </a>
+          <a class="item" href="#" ng-click="nearMe()" ng-show="authenticated" ng-class="{ active : isSelected('nearMe')}" ng-click="selectedPage('near')">
+            <i class="mail icon"></i> Near Me
           </a>
         <div class="right menu">
           <a class="item" href="#/login" ng-hide="authenticated" ng-class="{ active : isSelected('login')}" ng-click="selectedPage('login')">

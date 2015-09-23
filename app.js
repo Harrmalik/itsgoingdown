@@ -15,7 +15,7 @@ var api =  require("./routes/api");
 
 var MongoStore = connectMongo(session);
 mongoose.connect('mongodb://admin-mh:password@ds033317.mongolab.com:33317/heroku_l7nbt7vw');
-
+// mongoose.connect('mongodb://localhost:27017/goingdowndb');
 var app = express();
 
 // view engine setup
