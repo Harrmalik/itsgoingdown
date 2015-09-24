@@ -2,17 +2,23 @@
   <h1 class="ui header centered">It's Going Down
   <div class="ui sub header">Will you be there?</div></h1>
   <form class="ui form">
-    <div class="ui action huge inverted input field">
-      <input type="text" name="location" ng-model="term" placeholder="Where are you?">
-      <button class="ui teal button" ng-click="query(term); showing = true">Check it Out</button>
-    </div>
+   
+<div class="ui action huge inverted input field">
+  <input type="text" name="location" ng-model="location" placeholder="Where are you?">
+  <select ng-model="term" class="ui dropdown">
+    <option value="bars">Bars</option>
+    <option value="club">Clubs</option>
+    <option value="food">Food</option>
+  </select>
+  <button class="ui teal button" ng-click="searchQuery(location, term); showing = true">Check it Out</button>
+</div>
 </form>
-
+  
   <article id="list" class="ui raised very padded text container segment" ng-show="showing">
     <div class="ui items" ng-repeat="store in restaurants">
       <div class="item">
         <div class="image">
-            <img src="{{store.image_url || store.snippet_image_url}}" alt="restaurant image" />
+            <img ng-src="{{store.image_url || store.snippet_image_url}}" alt="restaurant image" />
         </div>
         <div class="content">
             <a class="ui green right ribbon label"><i class="adjust icon"></i> Open Now!</a>
@@ -26,7 +32,7 @@
             <p>{{store.snippet_text}}</p>
           </div>
           <div class="extra" ng-repeat="tag in store.categories">
-            <div id="tag" class="ui tag label teal">{{tag[0]}}</div>
+            <a ng-click="getCategory(location, tag[0])" id="tag" class="ui tag label teal">{{tag[0]}}</a>
           </div>
         </div>
       </div>

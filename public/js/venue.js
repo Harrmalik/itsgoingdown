@@ -2,28 +2,38 @@ var appVenues = angular.module('appVenues', ['appServices']);
 
 appVenues.controller('VenueController', ['$http', '$scope', 'SearchService', '$routeParams', 
     function($http, $scope, SearchService, $routeParams) {
-        $scope.search = "14802";
+        $scope.home;
+        $scope.term = 'bars';
         var location = $scope;
-        location.area = {};
-        location.restaurants = {};
-        location.restaurant = {};
-        $scope.biz = $routeParams.business;
+        // location.restaurants = {};
+        // location.restaurant = {};
         
+        //Gets the users location
         $http.get("http://ip-api.com/json").success(function(data) {
-            location.area = data;
+            $scope.home = data.zip;
         });
-        $scope.setTerm = function(term) {
+        
+        //Searches for the top 10 clubs near the user
+        $scope.nearMe = function(){
+            $http.get("../api/search/" + $scope.home + "&&clubs").success(function(data) {
+                location.restaurants = data.businesses;
+            });  
+        };
+        
+        //Sets the users location for their profile
+        $scope.setLocation = function(term) {
           $scope.search = term;
           console.log($scope.search);
         };
         
-        $scope.query = function(term) {
-            $http.get("../api/search/" + term).success(function(data) {
-                console.log(data.businesses[0]);
+        //Gets the top 10 results based on location and category
+        $scope.searchQuery = function(aLocation, aTerm) {
+            $http.get("../api/search/" + aLocation + "&&" + aTerm).success(function(data) {
                 location.restaurants = data.businesses;
             });
         };
         
+        //Gets the buisness based off ID
         $scope.getBiz = function() {
             $http.get("../api/biz/" + $scope.biz).success(function(data) {
                 console.log(data);
@@ -31,10 +41,10 @@ appVenues.controller('VenueController', ['$http', '$scope', 'SearchService', '$r
             });   
         };
         
+        //if the url contains the id for a business automatically call it
         if ($scope.biz) {
             $scope.getBiz();
+        } else {
+            //$scope.nearMe();
         }
-        // $scope.query("14802");
-        // console.log($scope.search);
-        //console.log(location.restaurants);
 }]);

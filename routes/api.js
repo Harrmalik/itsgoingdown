@@ -9,9 +9,10 @@ var yelp = require("yelp").createClient({
   token_secret: "xYrB5-isiGTDZPXqsgSwP7Efo6A"
 });
 
-router.get('/search/:term', function(req, res,next){
+//find the top 10 results based on a location and category
+router.get('/search/:location&&:term', function(req, res,next){
     // See http://www.yelp.com/developers/documentation/v2/search_api 
-    yelp.search({term: "food", location: req.params.term, limit:10}, function(error, data) {
+    yelp.search({term: req.params.term, location: req.params.location, limit:10}, function(error, data) {
       console.log(error);
       console.log(data);
       
@@ -19,9 +20,7 @@ router.get('/search/:term', function(req, res,next){
     });
 }); 
 
-
- 
-
+//gets the business by ID 
 router.get('/biz/:business', function(req, res, next) {
     // See http://www.yelp.com/developers/documentation/v2/business
     yelp.business(req.params.business, function(error, data) {

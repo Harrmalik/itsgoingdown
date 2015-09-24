@@ -19,6 +19,11 @@
           <a class="item blue" href="#" ng-class="{ active : isSelected('index')}" ng-click="selectedPage('index')">
             <i class="home icon"></i> Home
           </a>
+          <span ng-controller="VenueController">
+            <a class="item blue" href="#" ng-click="nearMe()">
+              <i class="home icon"></i> Near Me
+            </a>
+          </span>
         <div class="right menu">
           <a class="item" href="#/login" ng-hide="authenticated" ng-class="{ active : isSelected('login')}" ng-click="selectedPage('login')">
             <i class="mail icon"></i> Login
