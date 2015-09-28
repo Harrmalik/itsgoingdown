@@ -1,4 +1,4 @@
-<article ng-controller="VenueController as venCtrl" class="ui raised very padded text container segment">
+<article ng-controller="VenueController" class="ui raised very padded text container segment">
     <h2 class="ui header">{{restaurant.name}}
       <div class="ui sub header">
         <img class="ui image small" ng-src="{{restaurant.rating_img_url_large}}"/>
@@ -41,7 +41,7 @@
       <div class="extra content">
             <label>Tags</label>
             <div ng-repeat="tag in restaurant.categories">
-            <div id="tag" class="ui label teal">{{tag[0]}}</div>
+            <a href="#/" ng-click="searchQuery(restaurant.location.postal_code, tag[0])"><div id="tag" class="ui label teal">{{tag[0]}}</div></a>
             </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
       Reviews
     </h4>
     
-    <article ng-controller="reviewController">
+    <article>
       <div class="ui feed">
         <div class="event">
           <div class="label">

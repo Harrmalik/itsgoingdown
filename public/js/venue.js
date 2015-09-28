@@ -4,6 +4,7 @@ appVenues.controller('VenueController', ['$http', '$scope', 'SearchService', '$r
     function($http, $scope, SearchService, $routeParams) {
         $scope.home;
         $scope.term = 'bars';
+        $scope.biz = $routeParams.business;
         var location = $scope;
         // location.restaurants = {};
         // location.restaurant = {};
@@ -36,7 +37,6 @@ appVenues.controller('VenueController', ['$http', '$scope', 'SearchService', '$r
         //Gets the buisness based off ID
         $scope.getBiz = function() {
             $http.get("../api/biz/" + $scope.biz).success(function(data) {
-                console.log(data);
                 location.restaurant = data;
             });   
         };
