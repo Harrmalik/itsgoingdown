@@ -54,7 +54,7 @@ router.get('/biz/:business', function(req, res, next) {
 router.route('/biz/:business/reviews')
     //get reviews for a restaurant
     .get(function(req, res) {
-      User.find({"reviews.restaurantId": req.params.business}, {"display_name":1, "reviews.review":1, "reviews.date_created": 1, "reviews.likes": 1, "reviews.rating":1} , function(err,data) {
+      User.findOne({"reviews.restaurantId": req.params.business}, {"display_name":1, "reviews.review":1, "reviews.date_created": 1, "reviews.likes": 1, "reviews.rating":1, "reviews.restaurantId":1} , function(err,data) {
         if (err)
           return res.send(err); 
 
@@ -78,7 +78,25 @@ router.route('/reviews/:user')
   	
   				res.json("Review Added!");
   		});
-    });
+});
+
+router.route('/reviews/addLike/:reviewID')
+    //creates new review
+    .post(function(req, res){
+  		User.findOneAndUpdate({
+  			"review.id": req.params.reviewID
+  		},{
+    			$push: {reviews: req.body	}
+  		},{
+  			upsert: true
+  		},
+  			function(err){
+  				if(err)
+  					return res.send(err);
+  	
+  				res.json("Review Added!");
+  		});
+});
     
   
 module.exports = router;

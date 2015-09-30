@@ -1,9 +1,12 @@
 var appVenues = angular.module('appVenues', ['appServices']);
 
 appVenues.controller('VenueController', ['$http', '$scope', 'SearchService',  
-        '$routeParams', 
-    function($http, $scope, SearchService, $routeParams) {
+        '$routeParams', 'currentUserService', 
+    function($http, $scope, SearchService, $routeParams, currentUserService) {
+        $scope.rating = 3;
         $scope.search = "14802";
+        $scope.showing = false;
+        $scope.user= currentUserService.getString();
         var location = $scope;
         location.area = {};
         // location.restaurants = {};
@@ -42,18 +45,34 @@ appVenues.controller('VenueController', ['$http', '$scope', 'SearchService',
             });   
         };
         
-        if ($scope.biz) {
-            $scope.getBiz();
+        $scope.getReviews = function() {
             $http.get('/api/biz/' + $scope.biz + '/reviews').success(function(data){
                 location.reviews = data;
                 console.log(data);
             });
+        };
+        
+        if ($scope.biz) {
+            $scope.getBiz();
+            $scope.getReviews();
         }
         //console.log(currentUserService.currUser);
-        $scope.addReview = function() {
-            $http.post('/reviews/' + $scope.scope_current_user, $scope.review).success(function(data){
-    		});
+        $scope.addReview = function(review, restaurantId, userID) {
+            var aReview = {
+                review: review,
+                'restaurantId': restaurantId
+            };
+            $http.post('api/reviews/' + userID, aReview).success(function(data){
+     		});
+     		$scope.getReviews();
         };
+        
+        $scope.addLike = function(userID) {
+            $http.post('api/reviews/' + userID, {likes: +1}).success(function(data){
+                location.reviews = data;
+                //console.log(data);
+            });
+        }
         // $scope.query("14802");
         // console.log($scope.search);
         //console.log(location.restaurants);

@@ -1,4 +1,4 @@
-<article ng-controller="VenueController as venCtrl" class="ui raised very padded text container segment">
+<article ng-controller="VenueController" class="ui raised very padded text container segment">
     <h2 class="ui header">{{restaurant.name}}
       <div class="ui sub header">
         <img class="ui image small" ng-src="{{restaurant.rating_img_url_large}}"/>
@@ -46,40 +46,20 @@
       </div>
     </div>
     
-    
-    
-
-    
     <h4 class="ui horizontal divider teal header">
       <i class="write icon"></i>
       Reviews
     </h4>
     
-    
-    
-    
-    
-    <div ng-if="reviews[0] == null;">
-      <p>There are no reviews yet bet the first.</p>
-      <div class="ui red button">Write Review</div>
-    </div>
-    <div ng-if="">
-      <div class="ui red button">Write Review</div>
-    </div>
-    
-    
-    
-    
     <article>
-      <div ng-if="reviews[0] == null;">
-        <p>There are no reviews yet bet the first.</p>
-        <div class="ui red button">Write Review</div>
-      </div>
-      <div ng-if="reviews[0] !== null;">
-        <div class="ui red button" ng-click="showForm != showForm;">Write Review</div>
-      </div>
-
-      <form class="ui form" ng-submit="addReview()">
+      <!--<div ng-if="reviews[0] == null;">-->
+      <!--  <p>There are no reviews yet bet the first.</p>-->
+      <!--  <div class="ui red button" ng-click="showing = !showing">Write Review</div>-->
+      <!--</div>-->
+      <!--<div ng-if="reviews[0] != null;">-->
+      <!--  <div class="ui red button" ng-click="">Write Review</div>-->
+      <!--</div>-->
+      <form class="ui form" ng-submit="addReview(review, restaurant.id, userID, rating)">
         <p class="text-warning">{{error_message}}</p>
           <div class="required field">
               <div class="field">
@@ -87,10 +67,8 @@
                 <textarea ng-model="review" placeholder="What do you think about this resturant" rows="3"></textarea>
               </div>
           </div>
-          <rating id="my-rating" size="large" type="star" ng-model="rating"></rating>
-          <div class="field" ng-hide="true">
-              <input ng-model="restaurant.id">
-          </div>
+          <!--<rating id="my-rating" size="large" type="star" ng-model="rating"></rating>-->
+          
         <div class="ui error message">
           <div class="header">We noticed some issues</div>
         </div>
@@ -98,27 +76,27 @@
         <h4 class="ui horizontal divider">
         </h4>
       </form>
-    
-      <div class="ui feed" ng-repeat="review in reviews">
-        <div class="event" ng-repeat="rev in review.reviews">
+      
+      <div class="ui feed" ng-repeat="review in reviews.reviews" ng-show="review.restaurantId == restaurant.id">
+        <div class="event">
           <div class="label">
             <img src="/images/avatar.png">
           </div>
           <div class="content">
             <div class="summary">
-              <a>{{review.display_name}}</a> <rating id="my-rating" size="large" type="star" ng-model="arating"></rating>
+              <a>{{review.display_name}}</a>
               <div class="date">
-                {{rev.date_created | date: dd}}
+                {{review[$index].date_created | date: dd}}
               </div>
             </div>
             <div class="extra text">
-              {{rev.review}}
+              {{review.review}}
             </div>
-            <div class="meta">
-              <a class="like">
-                <i class="like icon"></i> 5 Likes
-              </a>
-            </div>
+            <!--<div class="meta">-->
+            <!--  <a class="like" ng-click="addLike(userID)">-->
+            <!--    <i class="like icon"></i> {{rev.likes}} Likes-->
+            <!--  </a>-->
+            <!--</div>-->
           </div>
         </div>
         </div>
