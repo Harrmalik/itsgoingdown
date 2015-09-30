@@ -9,6 +9,7 @@ appAuthentication.controller('AuthController', function($scope, $http, $rootScop
 		$http.post('/login', $scope.user).success(function(data){
 			if(data.state == 'success'){
 				$rootScope.authenticated = true;
+				$rootScope.userID = data.user._id;
 				$scope.scope_current_user = data.user.username;
 				currentUserService.setString($scope.scope_current_user);
 				$location.path('/');
@@ -40,6 +41,7 @@ appAuthentication.controller('AuthController', function($scope, $http, $rootScop
 		$http.get('/success').success(function(data){
 			if(data.state == 'success' && data.user){
 				$rootScope.authenticated = true;
+				$rootScope.userID = data.user._id;
 				$scope.scope_current_user = data.user.username;
 				currentUserService.setString($scope.scope_current_user);
 			}

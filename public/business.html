@@ -52,61 +52,48 @@
     </h4>
     
     <article>
-      <div class="ui feed">
+      <!--<div ng-if="reviews[0] == null;">-->
+      <!--  <p>There are no reviews yet bet the first.</p>-->
+      <!--  <div class="ui red button" ng-click="showing = !showing">Write Review</div>-->
+      <!--</div>-->
+      <!--<div ng-if="reviews[0] != null;">-->
+      <!--  <div class="ui red button" ng-click="">Write Review</div>-->
+      <!--</div>-->
+      <form class="ui form" ng-submit="addReview(review, restaurant.id, userID, rating)">
+        <p class="text-warning">{{error_message}}</p>
+          <div class="required field">
+              <div class="field">
+                <label>Review</label>
+                <textarea ng-model="review" placeholder="What do you think about this resturant" rows="3"></textarea>
+              </div>
+          </div>
+          <!--<rating id="my-rating" size="large" type="star" ng-model="rating"></rating>-->
+
+        <button class="ui button teal right floated" type="submit">Submit</button>
+        <h4 class="ui horizontal divider">
+        </h4>
+      </form>
+      
+      <div class="ui feed" ng-repeat="review in reviews.reviews" ng-if="review.restaurantId == restaurant.id">
         <div class="event">
           <div class="label">
             <img src="/images/avatar.png">
           </div>
           <div class="content">
-            <div class="date">
-              3 days ago
-            </div>
-            <div class="content">
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </div>
-            <div class="meta">
-              <a class="like">
-                <i class="like icon"></i> 4 Likes
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="event">
-          <div class="label">
-            <img src="/images/avatar.png">
-          </div>
-          <div class="content">
-            <div class="date">
-              3 days ago
-            </div>
-            <div class="content">
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </div>
-            <div class="meta">
-              <a class="like">
-                <i class="like icon"></i> 4 Likes
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="event">
-          <div class="label">
-            <img src="/images/avatar.png">
-          </div>
-          <div class="content">
-            <div class="date">
-              3 days ago
-            </div>
             <div class="summary">
-               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              <a>{{review.display_name}}</a>
+            <div class="date">
+              {{review[$index].date_created | date: dd}}
             </div>
-            <div class="meta">
-              <a class="like">
-                <i class="like icon"></i> 4 Likes
-              </a>
             </div>
+            <div class="extra text">
+              {{review.review}}
+            </div>
+            <!--<div class="meta">-->
+            <!--  <a class="like" ng-click="addLike(userID)">-->
+            <!--    <i class="like icon"></i> {{rev.likes}} Likes-->
+            <!--  </a>-->
+            <!--</div>-->
           </div>
         </div>
       </div>

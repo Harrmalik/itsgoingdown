@@ -44,6 +44,7 @@ article#list {
 
 #tagHeader {
   width:100%;
+  max-height: 300px;
   margin:0;
   padding: 0;
 }

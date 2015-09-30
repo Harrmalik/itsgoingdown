@@ -13,7 +13,6 @@
   <button class="ui teal button" ng-click="searchQuery(location, term); showing = true">Check it Out</button>
 </div>
 </form>
-  
   <article id="list" class="ui raised very padded text container segment" ng-show="showing">
     <div class="ui items" ng-repeat="store in restaurants">
       <div class="item">
@@ -32,7 +31,7 @@
             <p>{{store.snippet_text}}</p>
           </div>
           <div class="extra" ng-repeat="tag in store.categories">
-            <a ng-click="getCategory(location, tag[0])" id="tag" class="ui tag label teal">{{tag[0]}}</a>
+            <a ng-click="searchQuery(location, tag[0])" id="tag" class="ui tag label teal">{{tag[0]}}</a>
           </div>
         </div>
       </div>

@@ -1,14 +1,13 @@
-var app = angular.module('itsGoingDown', ['ngRoute',  'appAuthentication', 'appServices', 'appVenues']).run(function($rootScope, $http){
+var app = angular.module('itsGoingDown', ['ngRoute',  'appAuthentication', 'appServices', 'appVenues', 'angularify.semantic.rating']).run(function($rootScope, $http){
   
-});
-
-app.config(function($routeProvider){
+}).config(function($routeProvider){
   $routeProvider
     //the timeline display
     .when('/', {
       templateUrl: '/home.html',
       controller: 'AuthController',
-      controllerAs: 'AuthCtrl'
+      controllerAs: 'AuthCtrl',
+      reloadOnSearch: false
     })
     //the login display
     .when('/login', {
@@ -40,11 +39,7 @@ app.config(function($routeProvider){
       templateUrl: '/user.html',
       controller: 'AuthController'
     });
-});
-
-
-
-app.controller('NavController', function($scope) {
+}).controller('NavController', function($scope) {
   	$scope.page = "index";
 	
 	$scope.selectedPage = function(currentPage) {
@@ -56,6 +51,3 @@ app.controller('NavController', function($scope) {
 	};
 });
 
-$('.ui.rating')
-  .rating()
-;

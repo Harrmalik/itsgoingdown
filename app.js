@@ -15,7 +15,7 @@ var api =  require("./routes/api");
 
 var MongoStore = connectMongo(session);
 mongoose.connect('mongodb://admin-mh:password@ds033317.mongolab.com:33317/heroku_l7nbt7vw');
-
+// mongoose.connect('mongodb://localhost:27017/goingdowndb');
 var app = express();
 
 // view engine setup
@@ -44,6 +44,7 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use(passport.initialize());
 app.use(passport.session());
 
